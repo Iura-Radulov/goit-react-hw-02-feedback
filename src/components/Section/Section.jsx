@@ -1,17 +1,18 @@
-import FeedbackOptions from "components/FeedbackOptions"
-import Statistics from "components/Statistics"
-import Notification from "components/Notification"
-const Section = ({data, sum, percent, increments}) => {
-    const { good, neutral, bad } = data
+import style from './Section.module.css'
+import PropTypes from 'prop-types';
+
+const Section = ({ title, children }) => {
     
     return (
         <>
-            <h2>Please leave feedback</h2>
-            <FeedbackOptions increasing={increments} />
-            <h2>Statistics</h2>
-            {sum ? <Statistics good={good} neutral={neutral} bad={bad} total={sum} positivePercentage={percent} /> : 
-            <Notification message="There is no feedback"/>}            
+            <h2 className={style.title}>{title }</h2>
+            {children}         
             </>
     )
 }
+
+Section.propTypes = {
+    title: PropTypes.string.isRequired
+}
+
 export default Section
