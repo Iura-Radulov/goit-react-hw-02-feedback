@@ -7,7 +7,7 @@ const Section = ({ title, children }) => {
         <>
             <h2 className={style.title}>{title }</h2>
             {children}         
-            </>
+        </>
     )
 }
 

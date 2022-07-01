@@ -47,7 +47,7 @@ export class App extends Component {
       <div className='container' >    
       <Section title='Please leave feedback'>
         <FeedbackOptions options={{ good: this.goodIncrement, bad: this.badlIncrement, neutral: this.neutralIncrement }}
-          onLeaveFeedback='Statistics'/>            
+        />
             {sum ? <Statistics good={good} neutral={neutral} bad={bad} total={sum} positivePercentage={percent} /> : 
             <Notification message="There is no feedback"/>}       
       </Section>
