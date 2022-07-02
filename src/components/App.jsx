@@ -20,24 +20,13 @@ export class App extends Component {
     }    
   }
 
-  goodIncrement = () => {
+  increment = name => {
     this.setState(state => ({
-      good: state.good + 1
+      [name]: state[name] + 1
     }
     ))
   }
-  neutralIncrement = () => {
-    this.setState(state => ({
-      neutral: state.neutral + 1
-    }
-    ))
-  }
-    badlIncrement = () => {
-    this.setState(state => ({
-      bad: state.bad + 1
-    }
-    ))
-  }
+  
   render() { 
     const { good, neutral, bad } = this.state;
     const sum = this.countTotalFeedback();
@@ -46,8 +35,9 @@ export class App extends Component {
   return (
       <div className='container' >    
       <Section title='Please leave feedback'>
-        <FeedbackOptions options={{ good: this.goodIncrement, bad: this.badlIncrement, neutral: this.neutralIncrement }}
-        />
+        <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.increment} />
+      </Section>
+      <Section title='Statistics'>
             {sum ? <Statistics good={good} neutral={neutral} bad={bad} total={sum} positivePercentage={percent} /> : 
             <Notification message="There is no feedback"/>}       
       </Section>
